@@ -349,8 +349,57 @@
       display: none;
     }
 
+
+    /* Certificates */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .certificate-card {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .certificate-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #f4f4f4;
+      padding: 8px;
+    }
+
+    .certificate-info { padding: 20px; }
+    .certificate-info h3 {
+      color: var(--text);
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .certificate-info p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .certificate-link {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
     /* Responsive */
     @media(max-width: 800px) {
+      .certificates-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-content { grid-template-columns: 1fr; text-align: center; }
       .hero p { margin-left: auto; margin-right: auto; }
       .buttons, .socials { justify-content: center; }
@@ -360,6 +409,7 @@
     }
 
     @media(max-width: 600px) {
+      .certificates-grid { grid-template-columns: 1fr; }
       .menu-btn { display: block; }
 
       .nav-links {
@@ -401,7 +451,7 @@
 <header>
   <div class="container">
     <nav>
-      <a href="#home" class="logo">MD.MOHIUDDIN RIFAT</a>
+      <a href="#home" class="logo">MOHIUDDIN <span style="color:var(--text);">RIFAT</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
 
       <ul class="nav-links" id="navLinks">
@@ -410,6 +460,7 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -420,14 +471,15 @@
 <section class="hero" id="home">
   <div class="container hero-content">
     <div>
-      <div class="hero-tag">WELCOME TO MY PORTFOLIO</div>
+      <div class="hero-tag">GET TO KNOW ME</div>
       <h1>Hi, I'm <span>Md. Mohiuddin Rifat</span></h1>
       <h3>Electrical & Electronic Engineering Student</h3>
       <p>
-        I am a fourth-year EEE student at Jamalpur Science & Technology
-        University. I am passionate about electrical engineering,
-        electronics, technology, and solving real-world problems through
-        engineering and innovation.
+        I’m a fourth-year Electrical and Electronic Engineering student at
+        Jamalpur Science & Technology University. I enjoy learning how
+        electrical and electronic systems work, exploring new technology,
+        and putting classroom concepts into practice through coursework
+        and hands-on learning.
       </p>
 
       <div class="buttons">
@@ -438,8 +490,8 @@
 
     <div class="profile-wrapper">
       <!-- Replace this URL with your own photo -->
-      <img src="https://placehold.co/400x400/111a2b/00d4ff?text=YOUR+PHOTO"
-           alt="Md. Mohiuddin Rifat"
+      <img src="assets/profile.jpg"
+           alt="Portrait of Md. Mohiuddin Rifat"
            class="profile-photo">
 
       <div class="socials">
@@ -456,26 +508,29 @@
 <section id="about">
   <div class="container reveal">
     <h2 class="section-title">About <span>Me</span></h2>
-    <p class="section-subtitle">A little introduction about myself</p>
+    <p class="section-subtitle">A bit about my studies and interests</p>
 
     <div class="about-box">
       <p>
-        Hello! I am Md. Mohiuddin Rifat, an Electrical and Electronic
-        Engineering student at Jamalpur Science & Technology University,
-        currently studying in my fourth year.
+        I’m Md. Mohiuddin Rifat, a fourth-year student in the Department
+        of Electrical and Electronic Engineering at Jamalpur Science &
+        Technology University. Most of my time is spent learning about
+        engineering concepts and figuring out how they work in practice.
       </p>
 
       <p>
-        My academic interests include electrical power systems,
-        electronics, electrical machines, communication engineering,
-        and circuit design.
+        I’m especially interested in electrical power systems, electronics,
+        electrical machines, communication systems, and circuit design.
+        These subjects have given me plenty to explore, both in class and
+        during laboratory work.
       </p>
 
       <p>
-        I am also interested in programming and web development.
-        My goal is to continuously improve my technical knowledge,
-        develop practical engineering skills, and contribute to
-        innovative technological solutions.
+        Outside my core EEE subjects, I’m learning programming and web
+        development. I try to build my skills step by step, learn from
+        mistakes, and take on projects that help me connect theory with
+        practical work. I’m looking forward to gaining more experience
+        as I continue my journey in engineering.
       </p>
     </div>
   </div>
@@ -501,7 +556,7 @@
 <section id="skills">
   <div class="container reveal">
     <h2 class="section-title">My <span>Skills</span></h2>
-    <p class="section-subtitle">Technical knowledge and interests</p>
+    <p class="section-subtitle">Subjects and tools I’ve been learning and practising</p>
 
     <div class="skills-grid">
 
@@ -557,7 +612,7 @@
 <section id="projects">
   <div class="container reveal">
     <h2 class="section-title">My <span>Projects</span></h2>
-    <p class="section-subtitle">Academic and personal projects</p>
+    <p class="section-subtitle">A few areas I’ve explored through coursework and personal learning</p>
 
     <div class="projects-grid">
 
@@ -565,39 +620,89 @@
         <div class="project-icon">⚡</div>
         <h3>Electrical Engineering Project</h3>
         <p>
-          Add a description of your academic electrical engineering
-          project, its objectives, design, and implementation.
+          My EEE coursework has introduced me to analysing electrical
+          circuits and understanding how power-system components behave.
+          I use these topics to strengthen my understanding of the theory
+          covered in class and laboratory sessions.
         </p>
-        <small>Academic Project | Electrical Engineering</small>
-        <br>
-        <a href="#" class="project-link">Project Details →</a>
+        <small>Academic Learning | Electrical Engineering</small>
       </div>
 
       <div class="project-card">
         <div class="project-icon">🔌</div>
         <h3>Electronic Circuit Design</h3>
         <p>
-          Describe your electronics or circuit simulation project.
-          Mention the components, software, and working principles.
+          I’m interested in how electronic circuits work, from individual
+          components to the behaviour of a complete circuit. Studying
+          circuit diagrams and using simulation tools helps me understand
+          these ideas beyond the textbook.
         </p>
-        <small>Electronics | Circuit Design</small>
-        <br>
-        <a href="#" class="project-link">Project Details →</a>
+        <small>Electronics | Circuit Study</small>
       </div>
 
       <div class="project-card">
         <div class="project-icon">💻</div>
         <h3>Personal Portfolio Website</h3>
         <p>
-          A responsive personal portfolio website developed using
-          HTML, CSS, and JavaScript.
+          I created this website to introduce myself, share my academic
+          interests, and bring my work together in one place. I built it
+          with HTML, CSS, and JavaScript and published it using GitHub Pages.
         </p>
         <small>HTML | CSS | JavaScript</small>
         <br>
-        <a href="https://github.com/" target="_blank" rel="noopener"
-           class="project-link">GitHub →</a>
+        <a href="https://github.com/mohiuddinrifat/rifat-portfolio" target="_blank" rel="noopener"
+           class="project-link">View source on GitHub →</a>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container reveal">
+    <h2 class="section-title">My <span>Certificates</span></h2>
+    <p class="section-subtitle">
+      A few events and activities I’ve been glad to take part in during my university journey
+    </p>
+
+    <div class="certificates-grid">
+      <article class="certificate-card">
+        <a href="assets/certificate-jstu-football.jpg" target="_blank" rel="noopener">
+          <img src="assets/certificate-jstu-football.jpg"
+               alt="Jamalpur Science and Technology University certificate for participation in the 2024 inter-department football tournament">
+        </a>
+        <div class="certificate-info">
+          <h3>Inter-Department Football Tournament</h3>
+          <p>Jamalpur Science &amp; Technology University · 2024</p>
+          <a class="certificate-link" href="assets/certificate-jstu-football.jpg" target="_blank" rel="noopener">View certificate ↗</a>
+        </div>
+      </article>
+
+      <article class="certificate-card">
+        <a href="assets/certificate-ieee-seminar.jpg" target="_blank" rel="noopener">
+          <img src="assets/certificate-ieee-seminar.jpg"
+               alt="IEEE seminar certificate for Paving Pathways to Professional Development and International Recognition">
+        </a>
+        <div class="certificate-info">
+          <h3>IEEE Professional Development Seminar</h3>
+          <p>IEEE JSTU Student Branch · 22 July 2026</p>
+          <a class="certificate-link" href="assets/certificate-ieee-seminar.jpg" target="_blank" rel="noopener">View certificate ↗</a>
+        </div>
+      </article>
+
+      <article class="certificate-card">
+        <a href="assets/certificate-coldcofe-preview.jpg" target="_blank" rel="noopener">
+          <img src="assets/certificate-coldcofe-preview.jpg"
+               alt="ColdCofe Global Tech Community certificate for IELTS Preparation and Higher Study Abroad webinar">
+        </a>
+        <div class="certificate-info">
+          <h3>IELTS Preparation &amp; Higher Study Abroad</h3>
+          <p>ColdCofe Global Tech Community · 19 July 2026</p>
+          <a class="certificate-link" href="assets/certificate-coldcofe.pdf" target="_blank" rel="noopener">Open PDF certificate ↗</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -606,12 +711,12 @@
 <section id="contact">
   <div class="container reveal">
     <h2 class="section-title">Contact <span>Me</span></h2>
-    <p class="section-subtitle">Let's connect and work together</p>
+    <p class="section-subtitle">Feel free to get in touch</p>
 
     <div class="contact-box">
       <p>
-        Have a project, opportunity, or question?
-        Feel free to send me a message.
+        If you’d like to talk about engineering, technology, a project,
+        or an opportunity to learn and collaborate, I’d be glad to hear from you.
       </p>
 
       <form id="contactForm">
@@ -635,7 +740,7 @@
 
 <footer>
   <p>© <span id="year"></span> Md. Mohiuddin Rifat. All Rights Reserved.</p>
-  <p>Designed with passion for Engineering & Technology.</p>
+  <p>Built by Md. Mohiuddin Rifat as a place to share my learning and work.</p>
 </footer>
 
 <button id="topBtn" aria-label="Back to top">↑</button>
