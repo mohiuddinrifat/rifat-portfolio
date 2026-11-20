@@ -1,0 +1,706 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Md. Mohiuddin Rifat, Electrical and Electronic Engineering student at Jamalpur Science & Technology University.">
+  <meta name="author" content="Md. Mohiuddin Rifat">
+  <title>Md. Mohiuddin Rifat | EEE Student & Portfolio</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #080d18;
+      --card: #111a2b;
+      --accent: #00d4ff;
+      --text: #f1f5f9;
+      --muted: #9caec4;
+      --border: rgba(255,255,255,0.09);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,13,24,.92);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* Common sections */
+    section { padding: 85px 0; }
+
+    .section-title {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 45px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 40%, rgba(0,212,255,.12), transparent 35%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-tag {
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 28px;
+    }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 23px;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: .3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06111b;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn:hover { transform: translateY(-4px); }
+
+    .profile-wrapper { text-align: center; }
+
+    .profile-photo {
+      width: 280px;
+      height: 280px;
+      max-width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 35px rgba(0,212,255,.22);
+      background: var(--card);
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .socials a {
+      color: var(--accent);
+      font-size: 14px;
+      border: 1px solid var(--border);
+      padding: 8px 13px;
+      border-radius: 7px;
+    }
+
+    /* About */
+    .about-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 35px;
+      color: var(--muted);
+    }
+
+    .about-box p { margin-bottom: 15px; }
+
+    /* Education */
+    .education-card {
+      background: var(--card);
+      padding: 27px;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .education-card h3 { margin-bottom: 10px; }
+    .education-card p { color: var(--muted); }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .skill-card h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .skill-tags span {
+      background: #1c2b41;
+      color: var(--text);
+      padding: 7px 13px;
+      border-radius: 5px;
+      font-size: 13px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--accent);
+    }
+
+    .project-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .project-card h3 { margin-bottom: 12px; }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .project-card small { color: var(--accent); }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    /* Contact */
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      background: var(--card);
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-box p {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #080d18;
+      color: white;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .contact-box input:focus,
+    .contact-box textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .contact-box textarea { min-height: 130px; resize: vertical; }
+
+    .contact-box button {
+      border: none;
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 43px;
+      height: 43px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #06111b;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Responsive */
+    @media(max-width: 800px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .buttons, .socials { justify-content: center; }
+      .profile-wrapper { order: -1; }
+      .profile-photo { width: 210px; height: 210px; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media(max-width: 600px) {
+      .menu-btn { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #111a2b;
+        padding: 20px;
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links.active { display: flex; }
+
+      .section-title { font-size: 27px; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .about-box, .contact-box { padding: 23px; }
+      section { padding: 65px 0; }
+    }
+
+    /* Scroll animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">RIFAT.</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div>
+      <div class="hero-tag">WELCOME TO MY PORTFOLIO</div>
+      <h1>Hi, I'm <span>Md. Mohiuddin Rifat</span></h1>
+      <h3>Electrical & Electronic Engineering Student</h3>
+      <p>
+        I am a fourth-year EEE student at Jamalpur Science & Technology
+        University. I am passionate about electrical engineering,
+        electronics, technology, and solving real-world problems through
+        engineering and innovation.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">Explore My Projects</a>
+        <a href="assets/cv.pdf" class="btn btn-outline" download>Download CV</a>
+      </div>
+    </div>
+
+    <div class="profile-wrapper">
+      <!-- Replace this URL with your own photo -->
+      <img src="https://placehold.co/400x400/111a2b/00d4ff?text=YOUR+PHOTO"
+           alt="Md. Mohiuddin Rifat"
+           class="profile-photo">
+
+      <div class="socials">
+        <!-- Add your actual profile URLs -->
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:mohiuddinrifat56@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container reveal">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <p class="section-subtitle">A little introduction about myself</p>
+
+    <div class="about-box">
+      <p>
+        Hello! I am Md. Mohiuddin Rifat, an Electrical and Electronic
+        Engineering student at Jamalpur Science & Technology University,
+        currently studying in my fourth year.
+      </p>
+
+      <p>
+        My academic interests include electrical power systems,
+        electronics, electrical machines, communication engineering,
+        and circuit design.
+      </p>
+
+      <p>
+        I am also interested in programming and web development.
+        My goal is to continuously improve my technical knowledge,
+        develop practical engineering skills, and contribute to
+        innovative technological solutions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container reveal">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <p class="section-subtitle">Academic background</p>
+
+    <div class="education-card">
+      <h3>B.Sc. in Electrical and Electronic Engineering</h3>
+      <p>Jamalpur Science & Technology University</p>
+      <p>Department: Electrical and Electronic Engineering</p>
+      <p>Academic Status: 4th Year</p>
+      <p>Location: Jamalpur, Bangladesh</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container reveal">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <p class="section-subtitle">Technical knowledge and interests</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span>C</span>
+          <span>C++</span>
+          <span>Python</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Web Development</h3>
+        <div class="skill-tags">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Engineering Subjects</h3>
+        <div class="skill-tags">
+          <span>Circuit Analysis</span>
+          <span>Power Systems</span>
+          <span>Electronics</span>
+          <span>Electrical Machines</span>
+          <span>Communication Systems</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Engineering Tools</h3>
+        <div class="skill-tags">
+          <span>MATLAB</span>
+          <span>Proteus</span>
+          <span>Multisim</span>
+          <span>AutoCAD</span>
+        </div>
+      </div>
+
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:15px;">
+      Note: Update this section to include only the skills and tools you
+      can confidently use.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container reveal">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <p class="section-subtitle">Academic and personal projects</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon">⚡</div>
+        <h3>Electrical Engineering Project</h3>
+        <p>
+          Add a description of your academic electrical engineering
+          project, its objectives, design, and implementation.
+        </p>
+        <small>Academic Project | Electrical Engineering</small>
+        <br>
+        <a href="#" class="project-link">Project Details →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔌</div>
+        <h3>Electronic Circuit Design</h3>
+        <p>
+          Describe your electronics or circuit simulation project.
+          Mention the components, software, and working principles.
+        </p>
+        <small>Electronics | Circuit Design</small>
+        <br>
+        <a href="#" class="project-link">Project Details →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">💻</div>
+        <h3>Personal Portfolio Website</h3>
+        <p>
+          A responsive personal portfolio website developed using
+          HTML, CSS, and JavaScript.
+        </p>
+        <small>HTML | CSS | JavaScript</small>
+        <br>
+        <a href="https://github.com/" target="_blank" rel="noopener"
+           class="project-link">GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <p class="section-subtitle">Let's connect and work together</p>
+
+    <div class="contact-box">
+      <p>
+        Have a project, opportunity, or question?
+        Feel free to send me a message.
+      </p>
+
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+
+      <p style="margin-top:20px;">
+        Email:
+        <a href="mailto:mohiuddinrifat56@gmail.com"
+           style="color:var(--accent);">
+          mohiuddinrifat56@gmail.com
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Md. Mohiuddin Rifat. All Rights Reserved.</p>
+  <p>Designed with passion for Engineering & Technology.</p>
+</footer>
+
+<button id="topBtn" aria-label="Back to top">↑</button>
+
+<script>
+  // Mobile navigation
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuBtn.textContent = navLinks.classList.contains("active") ? "×" : "☰";
+  });
+
+  // Close menu after clicking a navigation link
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  // Automatic copyright year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Back to top button
+  const topBtn = document.getElementById("topBtn");
+
+  window.addEventListener("scroll", () => {
+    topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  topBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Scroll reveal animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+  });
+
+  // Contact form: opens the visitor's email application
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    const mailto = `mailto:mohiuddinrifat56@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+  });
+</script>
+
+</body>
+</html>
